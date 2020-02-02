@@ -4,6 +4,7 @@
   "description": "A multi purpose mongodb server",
   "main": "vanillaic.js",
   "scripts": {
+    "start": "node icecream",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "TubbyStubby",
