@@ -7,9 +7,12 @@ const mongoose = require('mongoose');
 const staffRoutes = require('./cone/toppings/staffs');
 const userRoutes = require('./cone/toppings/users');
 
-mongoose.connect('mongodb+srv://forster:<...123>@cluster0-g9sl4.mongodb.net/test?retryWrites=true&w=majority',  {
+mongoose.connect('mongodb+srv://forster:abcd@cluster0-g9sl4.mongodb.net/test?retryWrites=true&w=majority',  {
     useNewUrlParser: true,
     useUnifiedTopology: true
+})
+.catch( err => {
+    console.log('Mongodb connection error.', err);
 });
 
 mango.use(morgan('dev'));

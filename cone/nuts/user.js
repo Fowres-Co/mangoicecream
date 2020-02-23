@@ -11,5 +11,8 @@ const userSchema = mongoose.Schema({
     },
     uType: { type: Number, enum: [-1, 0, 1], required: true }
 });
+// 0 is staff
+//-1 is db testing
+//1 is student
 
 module.exports = mongoose.model('User', userSchema);
