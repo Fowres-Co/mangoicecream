@@ -10,6 +10,8 @@ const mealRoutes = require('./cone/toppings/meals');
 const messRoutes = require('./cone/toppings/messes');
 const studentRoutes = require('./cone/toppings/students');
 const rsvpRoutes = require('./cone/toppings/rsvp');
+const rankRoutes = require('./cone/toppings/ranks');
+const tStatRoutes = require('./cone/toppings/testStat');
 
 mongoose.connect('mongodb+srv://forster:abcd@cluster0-g9sl4.mongodb.net/test?retryWrites=true&w=majority',  {
     useNewUrlParser: true,
@@ -41,6 +43,8 @@ mango.use('/meals', mealRoutes);
 mango.use('/messes', messRoutes);
 mango.use('/students', studentRoutes);
 mango.use('/rsvp', rsvpRoutes);
+mango.use('/ranks', rankRoutes);
+mango.use('/tstats', tStatRoutes);
 
 //handling error
 mango.use((req, res, next) => {

@@ -26,7 +26,7 @@ router.post('/login', (req, res, next) => {
         if(user.length < 1)
             return res.status(401).json({auth: false, message: 'No user'});
         else if(user[0].uPass == req.body.uPass && user[0].uEmail == req.body.uEmail)
-            return res.status(200).json({auth: true});
+            return res.status(200).json({auth: true, uType: user[0].uType});
         else
             return res.status(401).json({auth: false});
     })
