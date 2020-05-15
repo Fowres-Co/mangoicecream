@@ -35,4 +35,12 @@ router.post('/:studentId', (req, res, next) => {
     });
 });
 
+router.get('/top10', (req, res, next) => {
+    Lboard.find()
+    .then( doc => {
+        var sorrtedList = doc.sort( (a, b) => a.scoreTotal<b.scoreTotal ? 1:-1 );
+        res.status(200).json(sorrtedList.slice(0,11));
+    });
+});
+
 module.exports = router;

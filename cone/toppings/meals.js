@@ -39,6 +39,19 @@ router.get('/now', (req, res, next) => {
     });
 });
 
+router.get('/today', (req, res, next) => {Meal.findOne({mealTime: 'breakfast'})
+    .then( bf => { Meal.findOne({mealTime: 'lunch'})
+        .then( ln => { Meal.findOne({mealTime: 'snacks'})
+            .then(sn => { Meal.findOne({mealTime: 'dinner'})
+                .then(di => { res.status(200).json(
+                    {
+                        breakfast: bf.mealItems,
+                        lunch: ln.mealItems,
+                        snacks: sn.mealItems,
+                        dinner: di.mealItems
+                    }
+);});});});});});
+
 router.post('/', (req, res, next) => {
     const meal = new Meal({
         _id: mongoose.Types.ObjectId(),
