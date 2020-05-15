@@ -36,10 +36,15 @@ router.post('/:studentId', (req, res, next) => {
 });
 
 router.get('/top10', (req, res, next) => {
-    Lboard.find()
+    Lboard.find().populate('studentId')
     .then( doc => {
-        var sorrtedList = doc.sort( (a, b) => a.scoreTotal<b.scoreTotal ? 1:-1 );
-        res.status(200).json(sorrtedList.slice(0,11));
+        var l = doc.slice(0,11);
+        var sorrtedList = l.sort( (a, b) => a.scoreTotal<b.scoreTotal ? 1:-1 );
+        var rankList = new Array();
+        sorrtedList.forEach(item => {
+            rankList.push({name: item.studentId.studentName, score: item.scoreTotal});
+        });
+        res.status(200).json(rankList);
     });
 });
 
